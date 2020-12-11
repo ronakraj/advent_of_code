@@ -127,7 +127,6 @@ while True:
         break
     data_in = copy.deepcopy(data_out)
 
-#pretty_print(data_out)
 occupied = 0
 vacant = 0
 floor = 0
@@ -141,9 +140,3 @@ for row in data_in:
             floor += 1
 
 print(f"Total occupied seats (#): {occupied}\nTotal vacant seats (L): {vacant}\nTotal floor seats (.): {floor}\nTotal: {occupied+vacant+floor}")
-"""
-data_3 = update_table(data_2)
-print("Data 3")
-pretty_print(data_3)
-print()
-"""
