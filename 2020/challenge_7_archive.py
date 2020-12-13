@@ -18,27 +18,33 @@ for rule in data_str:
             remaining_type = remaining_part.strip(str(remaining_qty)).strip('bags').strip('bag').strip().strip('.')
             rules[bag][remaining_type] = remaining_qty
 
+
+"""
+def bags_recursion(color, bag, mult):
+    if rules[color][bag] == {}:
+        return 0
+
+    else:
+        return mult * bags_recursion(color, bag, rules[color][bag])
+"""
+
+def bags_in_color(color, qty):
+    for bag in rules[color].keys():
+        print(bag)
+        print(rules[bag])
+
+        for next_color in rules[bag].keys():
+            print(next_color)
+            print(rules[next_color])
+    return 0
+
 # First check bags that can directly take color
 color = "shiny gold"
-total_bags = 0
 color_check = color
+total_bags = 0
 
-def total_bags_in_color(color):
-    total = 0
-    for bag in rules[color]:
-        total += rules[color][bag]
-    return total
+print(bags_in_color(color_check, 0))
 
-def bag_in_color(color, total=1, last_multiple=1):
-    global total_bags
-    if rules[color] != {}:
-        total = last_multiple * total_bags_in_color(color)
-        for bag in rules[color]:
-            print(f"Checking inside {color} and found {bag}")
-            print(f"{last_multiple} * {rules[color][bag]}\ttotal: {total}")
-            bag_in_color(bag, total, last_multiple * rules[color][bag]) 
-        print(f"DONE: {total}")
-        total_bags += total
-
-bag_in_color(color_check)
-print(total_bags)
+while True:
+    for bag in rules[color_check]:
+        print(rules[bag].keys())
